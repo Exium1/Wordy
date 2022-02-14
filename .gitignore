@@ -1,0 +1,10 @@
+#IDE
+.vscode
+.prettierrc
+
+#Node modules
+node_modules
+package-lock.json
+
+#Tokens and variables
+utils/config.js

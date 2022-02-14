@@ -1,0 +1,19 @@
+{
+  "name": "wordy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Exium",
+  "license": "ISC",
+  "dependencies": {
+    "eris": "^0.16.1",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "prettier": "^2.5.1"
+  }
+}
