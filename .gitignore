@@ -8,3 +8,5 @@ package-lock.json
 
 #Tokens and variables
 utils/config.js
+
+launch.bat
