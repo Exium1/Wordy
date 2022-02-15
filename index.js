@@ -1,6 +1,8 @@
 const Eris = require("eris");
 const { botToken } = require("./utils/config");
-const client = new Eris(botToken);
+const client = new Eris(botToken, {
+	intents: ["guilds", "guildMembers", "guildMessages", "guildMessageReactions"]
+});
 
 require("./helpers/extenders");
 require("./handlers/command")(client);
