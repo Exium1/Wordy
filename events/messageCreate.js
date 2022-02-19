@@ -9,18 +9,21 @@ module.exports = async (client, msg) => {
 	if (msg.author.bot) return;
 	if (msg.channel.guild && !msg.channel.permissionsOf(client.user.id).has("sendMessages")) return;
 
-	var wordleRegex = /(Wordle )[0-9]{3}( [0-9]\/[0-9])/;
+	var wordleRegex = /(Wordle )[0-9]{3} ([1-6]|X)\/6\n/;
 	var wordlePrefix = msg.content.match(wordleRegex);
-	var squareCount = msg.content.match(/(square:)/g);
+	var squareCount = msg.content.match(/(🟩|🟨|⬛)/g);
 
 	if (wordlePrefix) wordlePrefix = wordlePrefix[0];
+	if (squareCount) squareCount = squareCount.length;
 
 	// Handle Wordle submission
-	if (wordlePrefix && squareCount % 5 == 0) {
+	if (wordlePrefix && squareCount > 0 && squareCount % 5 == 0) {
 		var wordleNumber = wordlePrefix.match(/[0-9]{3}/)[0];
-		var wordleGuesses = wordlePrefix.match(/[0-9]\/[0-9]/)[0];
+		var wordleGuesses = wordlePrefix.match(/([1-6]|X)\/6/)[0];
 
 		wordleGuesses = wordleGuesses.split("/")[0];
+
+		if (wordleGuesses == "X") wordleGuesses = 7;
 
 		var userWordle = await gameModel.findOne({ userID: msg.author.id, wordleNumber: wordleNumber });
 
