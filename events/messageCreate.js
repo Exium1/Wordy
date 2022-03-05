@@ -11,7 +11,7 @@ module.exports = async (client, msg) => {
 
 	var wordleRegex = /(Wordle )[0-9]{3} ([1-6]|X)\/6\n/;
 	var wordlePrefix = msg.content.match(wordleRegex);
-	var squareCount = msg.content.match(/(🟩|🟨|⬛)/g);
+	var squareCount = msg.content.match(/(🟩|🟨|⬛|⬜)/g);
 
 	if (wordlePrefix) wordlePrefix = wordlePrefix[0];
 	if (squareCount) squareCount = squareCount.length;
